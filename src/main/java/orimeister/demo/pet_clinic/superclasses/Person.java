@@ -1,16 +1,20 @@
 package orimeister.demo.pet_clinic.superclasses;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @MappedSuperclass
 public abstract class Person extends BaseEntity {
-    @Column(nullable = false)
+    @Column(name="name")
+    @NotBlank
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(name="email", unique = true)
+    @NotBlank
     private String email;
 
-    @Column(nullable = false)
+    @Column(name ="phoneNumber")
+    @NotBlank
     private String phoneNumber;
 
     public String getName() {
