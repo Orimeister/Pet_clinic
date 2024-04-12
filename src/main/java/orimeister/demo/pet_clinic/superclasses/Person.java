@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 @MappedSuperclass
-public abstract class Person extends BaseEntity {
+public  class Person extends BaseEntity {
     @Column(name="name")
     @NotBlank
     private String name;

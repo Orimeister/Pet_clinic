@@ -8,29 +8,29 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-public abstract class BaseEntity {
+public class BaseEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Integer id;
     @CreatedDate
     @Column(updatable = false)
-    private LocalDateTime instant;
+    protected LocalDateTime instant;
     @LastModifiedDate
-    private LocalDateTime lastModifierDate;
+    protected LocalDateTime lastModifierDate;
 
-    public LocalDateTime getInstant() {
+    public java.time.LocalDateTime getInstant() {
         return instant;
     }
 
-    public void setInstant(LocalDateTime instant) {
+    public void setInstant(java.time.LocalDateTime instant) {
         this.instant = instant;
     }
 
-    public LocalDateTime getLastModifierDate() {
+    public java.time.LocalDateTime getLastModifierDate() {
         return lastModifierDate;
     }
 
-    public void setLastModifierDate(LocalDateTime lastModifierDate) {
+    public void setLastModifierDate(java.time.LocalDateTime lastModifierDate) {
         this.lastModifierDate = lastModifierDate;
     }
 }
