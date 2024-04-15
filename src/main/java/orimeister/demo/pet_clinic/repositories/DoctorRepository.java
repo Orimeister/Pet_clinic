@@ -9,8 +9,9 @@ import java.util.Optional;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
-    Optional<Doctor> findById(Integer Id);
     List<Doctor> findByName(String name);
     List<Doctor> findByEmail(String email);
-    List<Doctor> findByPhoneNumber(Integer phoneNumber);
+    List<Doctor> findByPhoneNumber(String phoneNumber);
+    List<Doctor> findByNameContaining(String name);
+    List<Doctor> findByEmailContaining(String email);
 }
