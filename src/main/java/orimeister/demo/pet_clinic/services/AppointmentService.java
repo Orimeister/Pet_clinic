@@ -31,4 +31,14 @@ public class AppointmentService {
     public List<Appointment> findByAppointmentStatus(String appointmentStatus){
         return appointmentRepository.findByAppointmentStatus(appointmentStatus);
     }
+    public void deleteAppointment(Integer appointmentId){
+        appointmentRepository.deleteById(appointmentId);
+    }
+    public void addAppointment(Appointment appointment){
+        appointmentRepository.save(appointment);
+    }
+    public void updateAppointment(Appointment appointment){
+        appointmentRepository.save(appointment);
+    }
+
 }

@@ -1,8 +1,10 @@
 package orimeister.demo.pet_clinic.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import orimeister.demo.pet_clinic.entities.Appointment;
 import orimeister.demo.pet_clinic.services.AppointmentService;
@@ -51,6 +53,22 @@ public class AppointmentController {
         List<Appointment> appointments = appointmentService.findByAppointmentStatus(status);
         return ResponseEntity.ok(appointments);
     }
-    
+    @PostMapping
+    public ResponseEntity<Appointment> createAppointment(@RequestBody Appointment appointment ){
+        appointmentService.addAppointment(appointment);
+        return new ResponseEntity<>(appointment, HttpStatus.CREATED);
+    }
+    @PutMapping("/{appointmentId}")
+    public ResponseEntity<Appointment> updateAppointment(@RequestBody Appointment appointmentDetails) {
+
+        appointmentService.updateAppointment(appointmentDetails);
+        return ResponseEntity.ok(appointmentDetails);
+    }
+    @DeleteMapping("/{appointmentId}")
+    public ResponseEntity<Void> deleteAppointment(@PathVariable Integer appointmentId) {
+        appointmentService.deleteAppointment(appointmentId);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }
